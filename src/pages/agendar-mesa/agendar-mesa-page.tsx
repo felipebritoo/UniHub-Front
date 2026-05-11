@@ -5,6 +5,8 @@ import { Toast } from '../../components/Toast/toast'
 import { tablesMock } from '../../mocks/agendar-mesa-mock'
 import { getAvailableTablesBySide } from '../../utils/agendar-mesa-utils'
 import { Badge } from '../../components/Badge/badge'
+import { Button } from '../../components/Button/button'
+import { openFeedbackForm } from '../../utils/forms-redirect-utils'
 
 interface TableSectionProps {
   side: 'left' | 'right'
@@ -128,6 +130,11 @@ export function AgendarMesaPage() {
         </Toast>
       )}
 
+      <div className="mb-4">
+        <Button variant="primary" size="medium" onClick={openFeedbackForm}>
+          Dê o seu feedback
+        </Button>
+      </div>
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 lg:flex-row lg:gap-8">
         <aside className="w-full flex-shrink-0 lg:w-72 lg:min-w-[18rem]">
           <MenuCard />
