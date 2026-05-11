@@ -61,17 +61,14 @@ export function LoginForm() {
   }
 
   return (
-    <section className="w-full rounded-lg bg-[var(--color-surface)] px-6 py-8 shadow-sm">
-      <h1 className="text-center text-2xl font-bold text-[var(--color-primary)]">
-        Entrar
-      </h1>
-
-      <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-10">
+    <section className="w-full rounded-2xl border border-[var(--color-gray-light)] bg-[var(--color-surface)] px-4 py-6 shadow-sm sm:px-6 sm:py-8 lg:px-8">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6 sm:gap-8">
         <div className="flex flex-col gap-2">
           <TextInput
             label="RA ou E-mail"
             value={identifier}
             onChange={handleIdentifierChange}
+            isObrigatorie
           />
           {errors.identifier && (
             <p
@@ -99,16 +96,9 @@ export function LoginForm() {
           )}
         </div>
 
-        <Button variant="primary" size="large" onClick={() => handleSubmit()}>
+        <Button variant="primary" size="large" type="submit">
           Entrar
         </Button>
-
-        <button
-          type="submit"
-          className="hidden"
-          aria-hidden="true"
-          tabIndex={-1}
-        />
       </form>
     </section>
   )

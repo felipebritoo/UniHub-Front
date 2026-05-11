@@ -128,6 +128,7 @@ export function CadastroForm() {
               setRa(value)
               clearErrorsIfNeeded()
             }}
+            isObrigatorie
           />
           {errors.ra && (
             <p
@@ -147,6 +148,7 @@ export function CadastroForm() {
               setEmail(value)
               clearErrorsIfNeeded()
             }}
+            isObrigatorie
           />
           {errors.email && (
             <p

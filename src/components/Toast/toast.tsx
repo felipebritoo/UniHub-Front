@@ -41,7 +41,7 @@ export function Toast({
   type,
   children,
   onClose,
-  duration = 300000,
+  duration = 3000,
 }: ToastProps) {
   const [open, setOpen] = useState(true)
 

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Modal } from './modal'
 import { TextInput } from '../Input/text-input'
 import { Calendar } from '../Calendar/calendar'
@@ -16,7 +16,7 @@ interface ReservationRoomModalProps {
   isOpen: boolean
   onClose: () => void
   tableName: string
-  onSubmit: (data: ReservationData) => void
+  onSubmit: (data: ReservationData) => void | Promise<void>
   isLoading?: boolean
   availableTimes?: string[]
 }
@@ -41,16 +41,36 @@ export function ReservationTableModal({
   const [name, setName] = useState('')
   const [date, setDate] = useState<Date | null>(null)
   const [time, setTime] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const canSubmit = !!name && !!date && !!time && !isLoading
+  const isBusy = isLoading || isSubmitting
+  const canSubmit = !!name && !!date && !!time && !isBusy
+
+  const clearForm = useCallback(() => {
+    setName('')
+    setDate(null)
+    setTime('')
+  }, [])
 
   const handleSubmit = useCallback(
-    (e?: React.SyntheticEvent) => {
+    async (e?: React.SyntheticEvent) => {
       e?.preventDefault()
       if (!canSubmit) return
-      onSubmit({ name, date, time })
+
+      try {
+        setIsSubmitting(true)
+        await Promise.resolve(onSubmit({ name, date, time }))
+        clearForm()
+      } finally {
+        setIsSubmitting(false)
+      }
     },
-    [canSubmit, name, date, time, onSubmit]
+    [canSubmit, onSubmit, name, date, time, clearForm]
+  )
+
+  const buttonLabel = useMemo(
+    () => (isBusy ? 'Enviando...' : 'Reservar mesa'),
+    [isBusy]
   )
 
   return (
@@ -65,15 +85,16 @@ export function ReservationTableModal({
       onClose={onClose}
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <TextInput label="Nome" value={name} onChange={setName} />
+        <TextInput label="Nome" value={name} onChange={setName}  isObrigatorie/>
         <div>
-          <Calendar selected={date} onChange={setDate} label="Data" />
+          <Calendar selected={date} onChange={setDate} label="Data" isObrigatorie />
         </div>
         <Select
           label="Horário"
           value={time}
           onChange={setTime}
           placeholder="Selecione um horário"
+          isObrigatorie
         >
           {availableTimes.map((t) => (
             <SelectItem key={t} value={t}>
@@ -82,8 +103,13 @@ export function ReservationTableModal({
           ))}
         </Select>
         <div className="flex justify-center">
-          <Button variant="primary" size="large" onClick={() => handleSubmit()}>
-            {isLoading ? 'Enviando...' : 'Enviar'}
+          <Button
+            variant="primary"
+            size="large"
+            disabled={!canSubmit}
+            onClick={() => handleSubmit()}
+          >
+            {buttonLabel}
           </Button>
         </div>
       </form>
