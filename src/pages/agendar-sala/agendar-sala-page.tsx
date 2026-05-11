@@ -10,6 +10,8 @@ import {
   sortRoomsByClassName,
 } from '../../utils/agendar-sala-utils'
 import { Badge } from '../../components/Badge/badge'
+import { openFeedbackForm } from '../../utils/forms-redirect-utils'
+import { Button } from '../../components/Button/button'
 
 function RoomCard({
   room,
@@ -119,6 +121,11 @@ export function AgendarSalaPage() {
         </Toast>
       )}
 
+      <div className="mb-4">
+        <Button variant="primary" size="medium" onClick={openFeedbackForm}>
+          Dê o seu feedback
+        </Button>
+      </div>
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 lg:flex-row lg:gap-8">
         <aside className="w-full flex-shrink-0 lg:w-72 lg:min-w-[18rem]">
           <MenuCard />
