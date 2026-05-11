@@ -5,8 +5,23 @@ interface TextInputProps {
   value: string
   onChange: (value: string) => void
   icon?: React.ReactNode
+  isObrigatorie?: boolean
 }
 
-export function TextInput({ label, value, onChange, icon }: TextInputProps) {
-  return <InputBase label={label} value={value} onChange={onChange} leftIcon={icon} />
+export function TextInput({
+  label,
+  value,
+  onChange,
+  icon,
+  isObrigatorie,
+}: TextInputProps) {
+  return (
+    <InputBase
+      label={label}
+      value={value}
+      onChange={onChange}
+      leftIcon={icon}
+      isObrigatorie={isObrigatorie}
+    />
+  )
 }

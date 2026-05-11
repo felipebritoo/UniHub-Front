@@ -16,12 +16,15 @@ export function PasswordInput({
 
   return (
     <InputBase
+      isObrigatorie
       label={label}
       value={value}
       onChange={onChange}
       type={show ? 'text' : 'password'}
       rightElement={
-        <span onClick={() => setShow(!show)}>{show ? <EyeIcon /> : <EyeSlashIcon />}</span>
+        <span onClick={() => setShow(!show)}>
+          {show ? <EyeIcon /> : <EyeSlashIcon />}
+        </span>
       }
     />
   )

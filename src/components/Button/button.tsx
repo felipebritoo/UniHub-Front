@@ -7,12 +7,11 @@ interface ButtonProps {
   variant?: ButtonVariant
   size?: ButtonSize
   children: React.ReactNode
-  onClick?: () => void
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
 }
 
-/* =========================
-   📏 Tamanhos (SRP)
-   ========================= */
 const sizeStyles: Record<ButtonSize, string> = {
   small: 'px-3 py-2 text-sm',
   medium: 'px-4 py-2.5 text-base',
@@ -27,7 +26,6 @@ const variantStyles: Record<ButtonVariant, string> = {
     'hover:bg-[var(--color-primary-hover)]',
     'hover:border-[var(--color-primary-hover)]',
   ].join(' '),
-
   outline: [
     'bg-transparent',
     'border-[var(--color-primary)]',
@@ -42,17 +40,20 @@ export function Button({
   size = 'medium',
   children,
   onClick,
+  type = 'button',
+  disabled = false,
 }: ButtonProps) {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
+      disabled={disabled}
       className={[
         'inline-flex items-center justify-center rounded-lg border font-semibold',
-        'transition-colors duration-200 cursor-pointer',
-
+        'transition-colors duration-200',
         'focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2',
-
+        'disabled:cursor-not-allowed disabled:opacity-60',
+        !disabled ? 'cursor-pointer' : '',
         sizeStyles[size],
         variantStyles[variant],
       ].join(' ')}

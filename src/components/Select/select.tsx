@@ -1,3 +1,4 @@
+// src/components/Select/select.tsx
 import React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { ArrowDownIcon } from '../../icons/lib/arrow-down-icon'
@@ -10,6 +11,7 @@ interface SelectProps {
   children: React.ReactNode
   leftIcon?: React.ReactNode
   placeholder?: string
+  isObrigatorie?: boolean
 }
 
 export function Select({
@@ -19,6 +21,7 @@ export function Select({
   children,
   leftIcon,
   placeholder = 'Selecione...',
+  isObrigatorie = false,
 }: SelectProps) {
   return (
     <div className="relative w-full">
@@ -84,6 +87,7 @@ export function Select({
         "
       >
         {label}
+        {isObrigatorie && <span className="text-red-600 ml-1">*</span>}
       </label>
     </div>
   )

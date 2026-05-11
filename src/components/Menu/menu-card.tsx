@@ -43,7 +43,7 @@ export function MenuCard() {
   }
 
   return (
-    <div className="rounded-[10px] border border-[var(--color-gray-light)] bg-[var(--color-bg)] px-5 py-6 shadow-sm">
+    <div className="w-full max-w-full rounded-[10px] border border-[var(--color-gray-light)] bg-[var(--color-bg)] px-4 py-5 shadow-sm sm:px-5 sm:py-6 lg:w-72 lg:min-w-[18rem]">
       <nav className="flex flex-col gap-2">
         {menuItems.map((item) => (
           <MenuItem
