@@ -1,8 +1,6 @@
-// src/components/Select/select.tsx
 import React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { ArrowDownIcon } from '../../icons/lib/arrow-down-icon'
-import { ArrowUpIcon } from '../../icons/lib/arrow-up-icon'
 
 interface SelectProps {
   label: string

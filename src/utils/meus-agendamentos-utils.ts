@@ -1,4 +1,4 @@
-import type { MeusAgendamentosReservation } from '../../../mocks/meus-agendamentos-mock'
+import type { MeusAgendamentosReservation } from "../mocks/meus-agendamentos-mock"
 
 export const formatTimeRange = (startTime: string, endTime: string): string => {
   const [startHour] = startTime.split(':')
