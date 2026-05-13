@@ -1,4 +1,5 @@
-import type { RoomReservation } from "../mocks/agendar-sala-mock"
+
+import type { RoomReservation } from '../mocks/agendar-sala-mock'
 
 export const getRoomsByBuilding = (
   rooms: RoomReservation[],
