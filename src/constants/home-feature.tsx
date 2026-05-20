@@ -2,6 +2,7 @@ import React from 'react'
 import { DeskIcon } from '../icons/lib/desk-icon'
 import { ScheduleIcon } from '../icons/lib/schedule-icon'
 import { BlackboardIcon } from '../icons/lib/blackboard-icon'
+import { ClipboardIcon } from '../icons/lib/clipboard-icon'
 
 export interface Feature {
   id: string
@@ -31,6 +32,13 @@ export const HOME_FEATURES: Feature[] = [
     title: 'Solicite recursos',
     description:
       'Professores podem solicitar projetores, notebooks e outros recursos para as aulas.',
+  },
+  {
+    id: 'track-reservations',
+    icon: <ClipboardIcon height={32} width={32} />,
+    title: 'Acompanhe reservas',
+    description:
+      'Visualize seus agendamentos ativos e gerencie cancelamentos de forma simples.',
   },
 ]
 
