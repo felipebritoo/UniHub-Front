@@ -126,10 +126,10 @@ export function AgendarSalaPage() {
               <div className="mb-6 flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl font-bold text-[var(--color-primary)]">
-                    Reserva de Sala
+                    Sala {selectedRoom}
                   </h2>
                   <p className="text-[var(--color-text-muted)]">
-                    Sala {selectedRoom}
+                    Reserva de Sala
                   </p>
                 </div>
                 <button
