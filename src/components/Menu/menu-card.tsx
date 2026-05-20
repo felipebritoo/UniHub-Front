@@ -35,7 +35,11 @@ const menuItems: MenuItemConfig[] = [
   },
 ]
 
-export function MenuCard() {
+interface MenuCardProps {
+  className?: string
+}
+
+export function MenuCard({ className = '' }: MenuCardProps) {
   const location = useLocation()
 
   const isPathActive = (href: string): boolean => {
@@ -43,7 +47,7 @@ export function MenuCard() {
   }
 
   return (
-    <div className="w-full max-w-full rounded-[10px] border border-[var(--color-gray-light)] bg-[var(--color-bg)] px-4 py-5 shadow-sm sm:px-5 sm:py-6 lg:w-72 lg:min-w-[18rem]">
+    <div className={['w-full max-w-full rounded-[10px] border border-[var(--color-gray-light)] bg-[var(--color-bg)] px-4 py-5 shadow-sm sm:px-5 sm:py-6 lg:w-72 lg:min-w-[18rem]', className].join(' ')}>
       <nav className="flex flex-col gap-2">
         {menuItems.map((item) => (
           <MenuItem

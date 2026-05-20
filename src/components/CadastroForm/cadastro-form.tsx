@@ -9,12 +9,14 @@ export function CadastroForm() {
   const {
     role,
     setRole,
+    nome,
     ra,
     email,
     password,
     confirmPassword,
     errors,
     isSubmitting,
+    apiError,
     updateField,
     submit,
     clearErrors,
@@ -33,6 +35,11 @@ export function CadastroForm() {
         }}
         className="mt-6 flex flex-col gap-4"
       >
+        {apiError && (
+          <p className="text-sm font-medium text-[var(--color-error)] text-center">
+            {apiError}
+          </p>
+        )}
         <div className="flex justify-center gap-8">
           <Radio
             name="role"
@@ -54,6 +61,24 @@ export function CadastroForm() {
               clearErrors()
             }}
           />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <TextInput
+            label="Nome Completo"
+            value={nome}
+            onChange={(value) => updateField('nome', value)}
+            isObrigatorie
+            disabled={isSubmitting}
+          />
+          {errors.nome && (
+            <p
+              className="text-sm font-medium text-[var(--color-error)]"
+              role="alert"
+            >
+              {errors.nome}
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col gap-2">

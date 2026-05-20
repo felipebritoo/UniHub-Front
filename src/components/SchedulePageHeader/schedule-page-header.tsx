@@ -13,6 +13,10 @@ export function SchedulePageHeader() {
         Escolha um dia da semana para filtrar a visualização e encontre
         rapidamente sala, horário e professor.
       </p>
+
+      <div className="mt-4 inline-block rounded-full bg-amber-100 px-4 py-1 text-xs font-medium text-amber-800">
+        Dados demonstrativos (API em desenvolvimento)
+      </div>
     </div>
   )
 }

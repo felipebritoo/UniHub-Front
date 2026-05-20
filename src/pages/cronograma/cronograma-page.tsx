@@ -12,8 +12,13 @@ import { useScheduleFilter } from '../../hooks/useScheduleFilter'
 
 function FeedbackButton() {
   return (
-    <div className="mb-4">
-      <Button variant="primary" size="medium" onClick={openFeedbackForm}>
+    <div>
+      <Button
+        variant="primary"
+        size="medium"
+        onClick={openFeedbackForm}
+        className="w-full"
+      >
         Dê o seu feedback
       </Button>
     </div>
@@ -35,15 +40,15 @@ export function CronogramaPage() {
   }
 
   return (
-    <div className="min-h-screen px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 lg:flex-row lg:gap-8">
-        <aside className="w-full flex-shrink-0 lg:w-72 lg:min-w-[18rem]">
+    <div className="min-h-screen overflow-x-hidden px-4 py-4 sm:px-5 sm:py-5 lg:px-6">
+      <div className="mx-auto flex w-full max-w-[92rem] flex-col items-stretch gap-5 lg:flex-row lg:gap-5">
+        <aside className="flex w-full flex-shrink-0 flex-col gap-3 lg:w-72 lg:min-w-[18rem] lg:self-stretch">
           <FeedbackButton />
-          <MenuCard />
+          <MenuCard className="lg:min-h-[520px] lg:flex-1" />
         </aside>
 
-        <main className="flex-1">
-          <section className="rounded-3xl border border-[var(--color-gray-light)] bg-[var(--color-surface)] p-6 shadow-sm sm:p-8 lg:p-6">
+        <main className="min-w-0 flex-1">
+          <section className="overflow-hidden rounded-3xl border border-[var(--color-gray-light)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-6 lg:p-6">
             <SchedulePageHeader />
 
             <div className="mt-8">
