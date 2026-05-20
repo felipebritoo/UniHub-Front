@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
+import { getErrorMessage } from '../utils/error-handler'
 
 export interface ReservationData {
   name: string
@@ -71,7 +72,7 @@ export function useReservationRoomForm({
         })
       } catch (err) {
         console.error('Erro na submissão:', err)
-        setError('Ocorreu um erro ao processar sua reserva. Tente novamente.')
+        setError(getErrorMessage(err))
       } finally {
         setIsSubmitting(false)
       }

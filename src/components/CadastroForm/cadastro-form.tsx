@@ -23,17 +23,13 @@ export function CadastroForm() {
   } = useCadastroForm()
 
   return (
-    <section className="w-full rounded-lg bg-[var(--color-surface)] px-6 py-8 shadow-sm">
-      <h1 className="text-center text-2xl font-bold text-[var(--color-primary)]">
-        Cadastrar
-      </h1>
-
+    <section className="w-full rounded-2xl border border-[var(--color-gray-light)] bg-[var(--color-surface)] px-4 py-5 shadow-sm sm:px-6 sm:py-6 lg:px-8">
       <form
         onSubmit={(event) => {
           event.preventDefault()
           void submit()
         }}
-        className="mt-6 flex flex-col gap-4"
+        className="flex flex-col gap-3"
       >
         {apiError && (
           <p className="text-sm font-medium text-[var(--color-error)] text-center">
@@ -151,7 +147,7 @@ export function CadastroForm() {
           )}
         </div>
 
-        <div className="pt-2 flex justify-center">
+        <div className="pt-1 flex justify-center">
           <Button
             variant="primary"
             size="large"
